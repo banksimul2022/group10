@@ -7,6 +7,10 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var tiliRouter = require('./routes/tili');
+var korttiRouter = require('./routes/kortti');
+var asiakasRouter = require('./routes/asiakas');
+var tilitapahtumatRouter = require('./routes/tilitapahtumat');
+
 
 var app = express();
 
@@ -20,5 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/tili', tiliRouter);
-
+app.use('/kortti', korttiRouter);
+app.use('/asiakas', asiakasRouter);
+app.use('/tilitapahtumat', tilitapahtumatRouter);
 module.exports = app;
