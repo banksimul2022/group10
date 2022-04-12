@@ -1,5 +1,7 @@
 const db = require('../database');
+const bcrypt = require('bcryptjs');
 
+const saltRounds=10;
 const kortti = {
   getById: function(id, callback) {
     return db.query('select * from kortti where idKortti=?', [id], callback);
@@ -8,21 +10,23 @@ const kortti = {
     return db.query('select * from kortti', callback);
   },
   add: function(kortti, callback) {
-    return db.query(
-      'insert into kortti (KortinNumero,PIN) values(?,?)',
-      [kortti.KortinNumero, kortti.PIN],
-      callback
-    );
+      bcrypt.hash(kortti.PIN, saltRounds,function(err, hash){
+        return db.query(
+            'insert into kortti (KortinNumero,PIN,idAsiakas,idTili) values(?,?,?,?)',
+            [kortti.KortinNumero, hash, kortti.idAsiakas, kortti.idTili, ],
+            callback);
+        });
   },
   delete: function(id, callback) {
     return db.query('delete from kortti where idKortti=?', [id], callback);
   },
   update: function(id, kortti, callback) {
-    return db.query(
-      'update kortti set KortinNumero=?,PIN=? where idKortti=?',
-      [kortti.KortinNumero, kortti.PIN, id],
-      callback
-    );
+    bcrypt.hash(kortti.PIN, saltRounds,function(err, hash){
+      return db.query(
+        'update kortti set KortinNumero=?,PIN=?,idAsiakas=?,idTili=? where idKortti=?',
+        [kortti.KortinNumero, hash, kortti.idAsiakas, kortti.idTili, id],
+        callback);
+    });
   }
 };
 module.exports = kortti;

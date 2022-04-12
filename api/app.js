@@ -12,7 +12,6 @@ var asiakasRouter = require('./routes/asiakas');
 var tilitapahtumatRouter = require('./routes/tilitapahtumat');
 
 
-
 var app = express();
 
 app.use(helmet());
