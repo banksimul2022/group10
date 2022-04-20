@@ -18,3 +18,41 @@ void nostarahaa::on_palaaNostarahaa_clicked()
     close ();
 }
 
+
+
+
+void nostarahaa::on_btn20Eur_clicked()
+{
+    close();
+}
+
+
+void nostarahaa::on_btn40Eur_clicked()
+{
+    close();
+}
+
+
+void nostarahaa::on_btn60Eur_clicked()
+{
+    close();
+}
+
+
+void nostarahaa::on_btn100Eur_clicked()
+{
+    close();
+}
+
+
+void nostarahaa::on_btn200Eur_clicked()
+{
+    close();
+}
+
+
+void nostarahaa::on_btn500Eur_clicked()
+{
+    close();
+}
+

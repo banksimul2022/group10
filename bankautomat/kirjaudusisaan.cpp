@@ -18,5 +18,6 @@ kirjaudusisaan::~kirjaudusisaan()
 void kirjaudusisaan::on_btnKirjaudu_clicked()
 {
     pPankkimenu -> exec();
+
 }
 
