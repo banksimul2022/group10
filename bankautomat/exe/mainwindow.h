@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "kirjaudusisaan.h"
-
+#include "rfid.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,11 +16,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_kirjaudusisaan_clicked();
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    kirjaudusisaan * pKirjaudusisaan;
-
+    Rfid * pRfid;
 };
 #endif // MAINWINDOW_H

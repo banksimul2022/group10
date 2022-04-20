@@ -9,34 +9,21 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    kirjaudusisaan.cpp \
     main.cpp \
-    mainwindow.cpp \
-    naytasaldo.cpp \
-    nostarahaa.cpp \
-    pankkimenu.cpp \
-    selaatilitapahtumia.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    kirjaudusisaan.h \
-    mainwindow.h \
-    naytasaldo.h \
-    nostarahaa.h \
-    pankkimenu.h \
-    selaatilitapahtumia.h
+    mainwindow.h
 
 FORMS += \
-    kirjaudusisaan.ui \
-    mainwindow.ui \
-    naytasaldo.ui \
-    nostarahaa.ui \
-    pankkimenu.ui \
-    selaatilitapahtumia.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+win32: LIBS += -L$$PWD/../rfid/build/debug/ -lrfid
 
-
+INCLUDEPATH += $$PWD/../rfid
+DEPENDPATH += $$PWD/../rfid
