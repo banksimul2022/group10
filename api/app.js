@@ -4,12 +4,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
 var tiliRouter = require('./routes/tili');
 var korttiRouter = require('./routes/kortti');
 var asiakasRouter = require('./routes/asiakas');
 var tilitapahtumatRouter = require('./routes/tilitapahtumat');
+var loginRouter = require('./routes/login');
 
 
 var app = express();
@@ -23,8 +25,31 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use(authenticateToken);
+
 app.use('/tili', tiliRouter);
 app.use('/kortti', korttiRouter);
 app.use('/asiakas', asiakasRouter);
 app.use('/tilitapahtumat', tilitapahtumatRouter);
+
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+  
+    console.log("token = "+token);
+    if (token == null) return res.sendStatus(401)
+  
+    jwt.verify(token, process.env.MY_TOKEN, (err, user) => {
+      console.log(err)
+  
+      if (err) return res.sendStatus(403)
+  
+      req.user = user
+  
+      next()
+    })
+  }
+
 module.exports = app;
