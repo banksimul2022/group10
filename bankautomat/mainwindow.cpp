@@ -6,10 +6,19 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    pKirjaudusisaan = new kirjaudusisaan(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::on_kirjaudusisaan_clicked()
+{
+
+    pKirjaudusisaan -> exec();
+
 }
 
