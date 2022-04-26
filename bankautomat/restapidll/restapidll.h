@@ -9,18 +9,26 @@
 #include <QJsonDocument>
 #include <QString>
 
-class RESTAPIDLL_EXPORT Restapidll
+class RESTAPIDLL_EXPORT Restapidll : public QObject
 {
     Q_OBJECT
 public:
     Restapidll(QObject * parent = nullptr);
     ~Restapidll();
-    void getSaldo(QString saldo);
+    void getSaldo(QString id);
+    void login(QString PIN);
 
 signals:
+    void loginSignal(QString);
 private slots:
     void getSaldoSlot(QNetworkReply *reply);
+    void loginSlot(QNetworkReply *reply);
 private:
+    QNetworkAccessManager *getSaldoManager;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+
 
 };
 
