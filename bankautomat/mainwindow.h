@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 #include "kirjaudusisaan.h"
 
@@ -22,6 +21,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     kirjaudusisaan * pKirjaudusisaan;
+
 
 };
 #endif // MAINWINDOW_H
