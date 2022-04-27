@@ -1,16 +1,16 @@
 const db = require('../database');
 
 const tilitapahtumat = {
-  getById: function(id, callback) {
-    return db.query('select * from tilitapahtumat where idTilitapahtumat=?', [id], callback);
+  getTilitapahtumat: function(KortinNumero, callback) {
+    return db.query('select * from tilitapahtumat JOIN kortti on tilitapahtumat.idKortti=kortti.idKortti where KortinNumero=? order by PVM LIMIT 10', [KortinNumero], callback);
   },
   getAll: function(callback) {
     return db.query('select * from tilitapahtumat', callback);
   },
   add: function(tilitapahtumat, callback) {
     return db.query(
-      'insert into tilitapahtumat (Tilinumero, KortinNumero, PVM, Tapahtuma, Summa) values(?,?,?,?,?)',
-      [tilitapahtumat.Tilinumero, tilitapahtumat.KortinNumero, tilitapahtumat.PVM, tilitapahtumat.Tapahtuma, tilitapahtumat.Summa],
+      'insert into tilitapahtumat (Tilinumero, KortinNumero, PVM, Tapahtuma, Summa, idKortti, idTili) values(?,?,?,?,?,?,?)',
+      [tilitapahtumat.Tilinumero, tilitapahtumat.KortinNumero, tilitapahtumat.PVM, tilitapahtumat.Tapahtuma, tilitapahtumat.Summa, tilitapahtumat.idKortti, tilitapahtumat.idTili],
       callback
     );
   },

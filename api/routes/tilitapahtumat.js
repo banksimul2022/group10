@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const tilitapahtumattapahtumat = require('../models/tilitapahtumat_model');
 
-router.get('/:id?',
+router.get('/:KortinNumero?',
  function(request, response) {
   if (request.params.id) {
-    tilitapahtumat.getById(request.params.id, function(err, dbResult) {
+    tilitapahtumat.getTilitapahtumat(request.params.KortinNumero, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
