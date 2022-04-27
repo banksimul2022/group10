@@ -40,3 +40,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/build/RFID/build/release/ -lRFID
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/build/RFID/build/debug/ -lRFID
+
+INCLUDEPATH += $$PWD/build/RFID
+DEPENDPATH += $$PWD/build/RFID
