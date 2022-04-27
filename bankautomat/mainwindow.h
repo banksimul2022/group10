@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "kirjaudusisaan.h"
+#include "pindll.h"
+#include "pankkimenu.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,9 +20,13 @@ public:
 
 private slots:
     void on_kirjaudusisaan_clicked();
+    void loginSlot(QString);
+    void pinkoodiSlot(QString);
 
 private:
     Ui::MainWindow *ui;
-    kirjaudusisaan * pKirjaudusisaan;
+    Pindll *pPindll;
+    pankkimenu *Ppankkimenu;
+
 };
 #endif // MAINWINDOW_H
