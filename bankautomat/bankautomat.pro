@@ -1,5 +1,4 @@
-QT       += core gui
-
+QT       += core gui serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -41,8 +40,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/build/RFID/build/release/ -lRFID
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/build/RFID/build/debug/ -lRFID
 
-INCLUDEPATH += $$PWD/build/RFID
-DEPENDPATH += $$PWD/build/RFID
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/rfid/build/release/ -lrfid
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/rfid/build/debug/ -lrfid
+
+INCLUDEPATH += $$PWD/rfid
+DEPENDPATH += $$PWD/rfid

@@ -14,7 +14,7 @@ SOURCES += \
     rfid.cpp
 
 HEADERS += \
-    RFID_global.h \
+    rfid_global.h \
     rfid.h
 
 # Default rules for deployment.

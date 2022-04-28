@@ -1,36 +1,33 @@
 #ifndef RFID_H
 #define RFID_H
 
-#include "RFID_global.h"
 #include <QSerialPort>
-#include <QSerialPortInfo>
+#include "rfid_global.h"
 #include <QObject>
-#include <QDebug>
+#include <QString>
 
-class RFID_EXPORT RFID : public QObject
- {
+class RFID_EXPORT Rfid : public QObject
+{
         Q_OBJECT
 
 public:
-    RFID(QObject * parent = nullptr);
-    ~RFID();
-    void kortinID();
+    Rfid(QObject *parent);
+    ~Rfid();
+
 
 signals:
 
-    void SendToExe(QByteArray);
+    void korttiIdSignal(QByteArray);
 
-public slots:
-
-    void RcvID();
 private slots:
+
     void serialSlot(void);
 
-private:
 
-    QSerialPort * port;
-    QByteArray ID;
-    QByteArray korttiid;
+private:
+    QSerialPort *serialPort;
+   // QByteArray korttiID;
+
 };
 
 #endif // RFID_H
