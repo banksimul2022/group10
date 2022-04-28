@@ -1,11 +1,15 @@
 const db = require('../database');
 
 const tilitapahtumat = {
-  getTilitapahtumat: function(KortinNumero, callback) {
-    return db.query('select * from tilitapahtumat JOIN kortti on tilitapahtumat.idKortti=kortti.idKortti where KortinNumero=? order by PVM LIMIT 10', [KortinNumero], callback);
+  getTilitapahtumat: function(id, callback) {
+    return db.query('select * from tilitapahtumat where idTili=?', [id], callback);
   },
   getAll: function(callback) {
     return db.query('select * from tilitapahtumat', callback);
+  },
+  get5Tapahtumaa: function(id, callback) {
+    return db.query('SELECT * FROM tilitapahtumat WHERE idTili=? ORDER BY idTilitapahtumat DESC limit 5;',
+     [id], callback);
   },
   add: function(tilitapahtumat, callback) {
     return db.query(

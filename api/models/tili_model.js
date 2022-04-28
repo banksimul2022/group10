@@ -6,7 +6,7 @@ const Tili = {
   },
   update: function(id, Tili, callback) {
     return db.query(
-      'update tili set Saldo=?, where idTili=?',
+      'update tili set Saldo=? where idTili=?',
       [Tili.Saldo, id],callback);
   }
 };

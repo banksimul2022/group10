@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const tilitapahtumattapahtumat = require('../models/tilitapahtumat_model');
+const tilitapahtumat = require('../models/tilitapahtumat_model');
 
-router.get('/:KortinNumero?',
+router.get('/:id?',
  function(request, response) {
   if (request.params.id) {
-    tilitapahtumat.getTilitapahtumat(request.params.KortinNumero, function(err, dbResult) {
+    tilitapahtumat.getById(request.params.id, function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
@@ -23,6 +23,18 @@ router.get('/:KortinNumero?',
   }
 });
 
+router.get('/5Tapahtumaa/:id?',
+ function(request, response) {
+  if (request.params.id) {
+    Tilitapahtumat.get5Tapahtumaa(request.params.id, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  } 
+});
 
 router.post('/', 
 function(request, response) {
