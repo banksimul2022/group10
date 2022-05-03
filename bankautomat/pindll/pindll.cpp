@@ -5,20 +5,10 @@ Pindll::Pindll(QObject *parent) : QObject(parent)
 {
    pengine = new engine;
 
-   connect(pengine, SIGNAL(pincodeFromUI()),
-               this, SLOT(pincodeSlot()));
+   connect(pengine, SIGNAL(pinkoodi_signal(QString)),
+               this, SLOT(pinkoodi_slot(QString)));
 
-   connect(pengine, SIGNAL(resetTimerSignal()),
-               this, SLOT(receiveTimerSignalFromUI()));
 
-   connect(pengine, SIGNAL(cancelPINSignal()),
-               this, SLOT(receiveCancelPin()));
-
-   connect(this, SIGNAL(wrongPinToUI()),
-               pengine, SLOT(updateScreen()));
-
-   connect(this, SIGNAL(cardLockToUI()),
-               pengine, SLOT(cardLockInfo()));
 }
 
 Pindll::~Pindll()
@@ -41,34 +31,15 @@ void Pindll::suljePincodeUi()
     pengine->close();
 }
 
-void Pindll::getPincode()
+void Pindll::pinkoodi_vaarin()
 {
-    qDebug() << "getPincode()";
+    qDebug() << "pinkoodi vaarin";
+    pengine->pinkoodi_vaarin();
 }
 
-void Pindll::pincodeSlot()
+void Pindll::pinkoodi_slot(QString pinkoodi)
 {
-      pincode = pengine->returnPincode();
-      qDebug() << "pincodeSlot() in DLL" << pincode;
-      emit signalPincode(pincode);
+      emit pinkoodi_signal(pinkoodi);
 }
 
-void Pindll::receiveTimerSignalFromUI()
-{
-    emit resetLoginTimerSignal();
-}
 
-void Pindll::receiveCancelPin()
-{
-    emit cancelPincodeLogin();
-}
-
-void Pindll::exeVaaraPin()
-{
-    emit wrongPinToUI();
-}
-
-void Pindll::exeKortinLukitusVaroitus()
-{
-    emit cardLockToUI();
-}

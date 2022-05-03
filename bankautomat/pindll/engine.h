@@ -17,19 +17,12 @@ class engine : public QDialog
 public:
     explicit engine(QWidget *parent = nullptr);
     ~engine();
-    QString returnPincode();
     QTimer *timer;
+    void pinkoodi_vaarin();
+
 
 signals:
-       void pincodeFromUI();
-       void resetTimerSignal();
-       void cancelPINSignal();
-
-public slots:
-           void resetLoginTimer();
-           void updateScreen();
-           void cardLockInfo();
-
+       void pinkoodi_signal(QString);
 
 private slots:
     void on_a1_clicked();
@@ -44,14 +37,17 @@ private slots:
     void on_a0_clicked();
     void on_clear_clicked();
     void on_enter_clicked();
-
-
     void on_cancel_clicked();
+
+    void aika_loppu();
 
 private:
     Ui::engine *ui;
     QString setValue;
     QString hideValue;
+    QString pinkoodi;
+    int yritys = 3;
+
 
 
 };

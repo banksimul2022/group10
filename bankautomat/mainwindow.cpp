@@ -13,38 +13,9 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer;
 
 
-    connect(pPindll, SIGNAL(signalPincode(QString)), // PIN DLL->EXE
-                this, SLOT(receivePincode(QString)));
+    connect(pPindll, SIGNAL(pinkoodi_signal(QString)), // PIN DLL->EXE
+                this, SLOT(pinkoodi_slot(QString)));
 
-    connect(this, SIGNAL(wrongPinSignal()),
-                 pPindll, SLOT(exeVaaraPin()));
-
-    connect(this, SIGNAL(cardLockWarning()),
-                 pPindll, SLOT(exeKortinLukitusVaroitus()));
-
-    connect(this, SIGNAL(accountIDtoMainWindow(QString)),
-                Ppankkimenu, SLOT(receiveAccountIDfromLogin(QString)));
-
-    connect(this, SIGNAL(clientIDtoMainWindow(QString)),
-                Ppankkimenu, SLOT(receiveCLientIDfromLogin(QString)));
-
-    connect(this, SIGNAL(MainTimerSignal()),
-                Ppankkimenu, SLOT(startMainTimer()));
-
-    connect(pPindll, SIGNAL(resetLoginTimerSignal()),
-                this, SLOT(resetTimer()));
-
-    connect(timer, SIGNAL(timeout()),
-                this, SLOT(loginIdleSlot()));
-
-    connect(pPindll, SIGNAL(cancelPincodeLogin()),
-                 this, SLOT(loginIdleSlot()));
-
-    connect(this, SIGNAL(wrongPinSignal()),
-                 pPindll, SLOT(exeWrongPin()));
-
-        connect(this, SIGNAL(cardLockWarning()),
-                pPindll, SLOT(exeCardLockWarning()));
 
 
 }
@@ -59,6 +30,9 @@ MainWindow::~MainWindow()
     delete pPindll;
     pPindll = nullptr;
 
+    delete timer;
+    timer=nullptr;
+
 }
 
 
@@ -68,45 +42,40 @@ void MainWindow::on_kirjaudusisaan_clicked()
     pPindll->naytaPincodeUi();
 
 
+
 }
 
-void MainWindow::receiveLogin(QString)
+void MainWindow::RFID_slot(QByteArray)
 {
-    qDebug() << "receiveLogin() in EXE";
-
-    if(loginTries == 3 || cardLocked == '1')
-   {
-            emit cardLockWarning();
-   }
-    else {
-        emit wrongPinSignal();
-        loginTries++;
-    }
-    if(pincode == "1111" && cardLocked == '0')
-        {
-            delete pPindll;
-            pPindll = nullptr;
-            Ppankkimenu->show();
-            timer->stop();
-            loginTries = 1;
-        }
-
-
+    pPindll->naytaPincodeUi();
 }
 
-void MainWindow::receivePincode(QString pin)
+void MainWindow::startTimer()
 {
-        pincode = pin;
-        qDebug() << "receivePincode() in EXE" << pincode;
-        if(pin=="1111")
-        {
-            Ppankkimenu->exec();
-        }
-        else{
-            pPindll->exeVaaraPin();
-        }
-
 
 }
+
+void MainWindow::tiliValittuSlot(QString)
+{
+
+}
+
+void MainWindow::getAsiakasSlot(QString)
+{
+
+}
+
+
+void MainWindow::pinkoodi_slot(QString pinkoodi)
+{
+
+}
+
+void MainWindow::login_slot(QByteArray)
+{
+
+}
+
+
 
 

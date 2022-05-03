@@ -3,9 +3,10 @@
 
 #include <QMainWindow>
 #include "pindll.h"
-#include "pankkimenu.h"
 #include <QObject>
 #include <QTimer>
+
+#include "pankkimenu.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,18 +23,15 @@ public:
 
 private slots:
     void on_kirjaudusisaan_clicked();
-
-public slots:
-    void receiveLogin(QString);
-    void receivePincode(QString);
-
+    void pinkoodi_slot(QString);
+    void login_slot(QByteArray);
+    void RFID_slot(QByteArray);
+    void startTimer();
+    void tiliValittuSlot(QString);
+    void getAsiakasSlot(QString);
 
 signals:
-    void wrongPinSignal();
-    void cardLockWarning();
-    void clientIDtoMainWindow(QString);
-    void accountIDtoMainWindow(QString);
-
+    void asiakasSignal(QString);
 
 
 private:
@@ -41,10 +39,8 @@ private:
     Pindll *pPindll;
     pankkimenu *Ppankkimenu;
     QTimer *timer;
-    QString pincode;
-    QString cardLocked;
-    QString cardnumber;
-    short loginTries = 1;
+    QString asiakas;
+    QString valinta;
 
 
 };

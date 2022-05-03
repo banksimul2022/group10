@@ -132,6 +132,19 @@
     <string>Peruuta</string>
    </property>
   </widget>
+  <widget class="QLabel" name="vaarapin_label">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>60</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

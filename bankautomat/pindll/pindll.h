@@ -15,23 +15,17 @@ public:
     ~Pindll();
     void naytaPincodeUi(); // open pinUi
     void suljePincodeUi(); // close pinUi
-    void getPincode();     // nouda pinkoodi
-    QString pincode;
+    void pinkoodi_vaarin();
+
 
 
 public slots:
-        void pincodeSlot();
-        void receiveTimerSignalFromUI();
-        void receiveCancelPin();
-        void exeVaaraPin();
-        void exeKortinLukitusVaroitus();
+        void pinkoodi_slot(QString);
+
 
 signals:
-        void signalPincode(QString);
-        void resetLoginTimerSignal();
-        void cancelPincodeLogin();
-        void wrongPinToUI();
-        void cardLockToUI();
+        void pinkoodi_signal(QString);
+
 
 private:
     engine *pengine;
