@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QString>
+#include <QTimer>
+
 
 namespace Ui {
 class engine;
@@ -15,12 +17,21 @@ class engine : public QDialog
 public:
     explicit engine(QWidget *parent = nullptr);
     ~engine();
+    QString returnPincode();
+    QTimer *timer;
 
 signals:
-    void pinkoodi_signal(QString);
+       void pincodeFromUI();
+       void resetTimerSignal();
+       void cancelPINSignal();
+
+public slots:
+           void resetLoginTimer();
+           void updateScreen();
+           void cardLockInfo();
+
 
 private slots:
-    void on_pushButton_clicked();
     void on_a1_clicked();
     void on_a2_clicked();
     void on_a3_clicked();
@@ -34,9 +45,15 @@ private slots:
     void on_clear_clicked();
     void on_enter_clicked();
 
+
+    void on_cancel_clicked();
+
 private:
     Ui::engine *ui;
-    QString pinkoodi;
+    QString setValue;
+    QString hideValue;
+
+
 };
 
 #endif // ENGINE_H

@@ -5,19 +5,35 @@
 #include "pindll_global.h"
 #include "engine.h"
 
-class PINDLL_EXPORT Pindll
-{
-public:
-    Pindll();
-   ~Pindll();
-    void login();
 
-private slots:
-    void pinkoodi_slot(QString);
+class PINDLL_EXPORT Pindll  : public QObject
+{
+   Q_OBJECT
+
+public:
+    Pindll(QObject *parent = nullptr);
+    ~Pindll();
+    void naytaPincodeUi(); // open pinUi
+    void suljePincodeUi(); // close pinUi
+    void getPincode();     // nouda pinkoodi
+    QString pincode;
+
+
+public slots:
+        void pincodeSlot();
+        void receiveTimerSignalFromUI();
+        void receiveCancelPin();
+        void exeVaaraPin();
+        void exeKortinLukitusVaroitus();
 
 signals:
-    void pinkoodi_signal(QString);
+        void signalPincode(QString);
+        void resetLoginTimerSignal();
+        void cancelPincodeLogin();
+        void wrongPinToUI();
+        void cardLockToUI();
 
+private:
     engine *pengine;
 };
 
