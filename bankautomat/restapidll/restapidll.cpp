@@ -39,9 +39,10 @@ void Restapidll::getSaldoSlot(QNetworkReply* reply)
     getSaldoManager->deleteLater();
 }
 
-void Restapidll::login(QString PIN)
+void Restapidll::login(QString KortinNumero, QString PIN)
 {
         QJsonObject jsonObj;
+        jsonObj.insert("KortinNumero", KortinNumero);
         jsonObj.insert("PIN", PIN);
         QString site_url="http://localhost:3000/login";
         QNetworkRequest request((site_url));
@@ -64,6 +65,16 @@ void Restapidll::loginSlot(QNetworkReply *reply)
         qDebug()<<response_data;
         reply->deleteLater();
         loginManager->deleteLater();
+}
+
+void Restapidll::nostoSlot(QNetworkReply *reply)
+{
+
+}
+
+void Restapidll::getTT10Slot(QNetworkReply *reply)
+{
+
 }
 
 

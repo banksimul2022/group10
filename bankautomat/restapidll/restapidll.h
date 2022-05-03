@@ -16,7 +16,7 @@ public:
     Restapidll(QObject * parent = nullptr);
     ~Restapidll();
     void getSaldo(QString id);
-    void login(QString PIN);
+    void login(QString PIN, QString KortinNumero);
     void nosto(QString, QString, QString);
     void getTT10(QString);
 
