@@ -13,7 +13,7 @@ class RFID_EXPORT Rfid : public QObject
 public:
     Rfid(QObject *parent);
     ~Rfid();
-
+    void readID();
 
 signals:
 
@@ -21,12 +21,14 @@ signals:
 
 private slots:
 
-    void serialSlot(void);
+    //void serialSlot(void);
 
+public slots:
 
+    void receiveCardID();
 private:
     QSerialPort *serialPort;
-   // QByteArray korttiID;
+    QByteArray ID;
 
 };
 
