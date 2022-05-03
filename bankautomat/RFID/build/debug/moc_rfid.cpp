@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Rfid_t {
     QByteArrayData data[4];
-    char stringdata0[32];
+    char stringdata0[35];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,10 +35,10 @@ static const qt_meta_stringdata_Rfid_t qt_meta_stringdata_Rfid = {
 QT_MOC_LITERAL(0, 0, 4), // "Rfid"
 QT_MOC_LITERAL(1, 5, 14), // "korttiIdSignal"
 QT_MOC_LITERAL(2, 20, 0), // ""
-QT_MOC_LITERAL(3, 21, 10) // "serialSlot"
+QT_MOC_LITERAL(3, 21, 13) // "receiveCardID"
 
     },
-    "Rfid\0korttiIdSignal\0\0serialSlot"
+    "Rfid\0korttiIdSignal\0\0receiveCardID"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +59,7 @@ static const uint qt_meta_data_Rfid[] = {
        1,    1,   24,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   27,    2, 0x08 /* Private */,
+       3,    0,   27,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QByteArray,    2,
@@ -77,7 +77,7 @@ void Rfid::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->korttiIdSignal((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
-        case 1: _t->serialSlot(); break;
+        case 1: _t->receiveCardID(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

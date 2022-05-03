@@ -8,7 +8,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    kirjaudusisaan.cpp \
     main.cpp \
     mainwindow.cpp \
     naytasaldo.cpp \
@@ -17,7 +16,6 @@ SOURCES += \
     selaatilitapahtumia.cpp
 
 HEADERS += \
-    kirjaudusisaan.h \
     mainwindow.h \
     naytasaldo.h \
     nostarahaa.h \
@@ -25,7 +23,6 @@ HEADERS += \
     selaatilitapahtumia.h
 
 FORMS += \
-    kirjaudusisaan.ui \
     mainwindow.ui \
     naytasaldo.ui \
     nostarahaa.ui \
@@ -37,6 +34,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+<<<<<<< HEAD
 
 
 
@@ -46,3 +44,10 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/rfid/build/debug/ -lrfi
 
 INCLUDEPATH += $$PWD/rfid
 DEPENDPATH += $$PWD/rfid
+=======
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/pindll/build/release/ -lpindll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/pindll/build/debug/ -lpindll
+
+INCLUDEPATH += $$PWD/pindll
+DEPENDPATH += $$PWD/pindll
+>>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
