@@ -2,6 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "pindll.h"
+#include <QObject>
+#include <QTimer>
+#include "restapidll.h"
+
+#include "pankkimenu.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +22,28 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_kirjaudusisaan_clicked();
+    void pinkoodi_slot(QString);
+    void login_slot(QString);
+    void RFID_slot(QByteArray);
+    void startTimer();
+    void tiliValittuSlot(QString);
+    void getAsiakasSlot(QString);
+
+signals:
+    void asiakasSignal(QString);
+
+
 private:
     Ui::MainWindow *ui;
+    Pindll *pPindll;
+    pankkimenu *Ppankkimenu;
+    QTimer *timer;
+    QString asiakas;
+    QString valinta;
+    Restapidll* pRestapidll;
+
+
 };
 #endif // MAINWINDOW_H
