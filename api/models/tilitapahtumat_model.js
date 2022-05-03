@@ -11,6 +11,10 @@ const tilitapahtumat = {
     return db.query('SELECT * FROM tilitapahtumat WHERE idTili=? ORDER BY idTilitapahtumat DESC limit 5;',
      [id], callback);
   },
+  get5EkaaTapahtumaa: function(id, callback) {
+    return db.query('SELECT * FROM tilitapahtumat WHERE idTili=? ORDER BY idTilitapahtumat limit 5;',
+     [id], callback);
+  },
   add: function(tilitapahtumat, callback) {
     return db.query(
       'insert into tilitapahtumat (Tilinumero, KortinNumero, PVM, Tapahtuma, Summa, idKortti, idTili) values(?,?,?,?,?,?,?)',
