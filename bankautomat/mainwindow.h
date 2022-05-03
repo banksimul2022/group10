@@ -5,6 +5,7 @@
 #include "pindll.h"
 #include <QObject>
 #include <QTimer>
+#include "restapidll.h"
 
 #include "pankkimenu.h"
 
@@ -24,7 +25,7 @@ public:
 private slots:
     void on_kirjaudusisaan_clicked();
     void pinkoodi_slot(QString);
-    void login_slot(QByteArray);
+    void login_slot(QString);
     void RFID_slot(QByteArray);
     void startTimer();
     void tiliValittuSlot(QString);
@@ -41,6 +42,7 @@ private:
     QTimer *timer;
     QString asiakas;
     QString valinta;
+    Restapidll* pRestapidll;
 
 
 };

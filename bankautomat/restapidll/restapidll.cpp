@@ -66,4 +66,14 @@ void Restapidll::loginSlot(QNetworkReply *reply)
         loginManager->deleteLater();
 }
 
+void Restapidll::nostoSlot(QNetworkReply *reply)
+{
+
+}
+
+void Restapidll::getTT10Slot(QNetworkReply *reply)
+{
+
+}
+
 

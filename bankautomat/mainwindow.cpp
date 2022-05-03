@@ -10,13 +10,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     pPindll = new Pindll(this);
     Ppankkimenu = new pankkimenu;
+    pRestapidll = new Restapidll;
     timer = new QTimer;
 
 
     connect(pPindll, SIGNAL(pinkoodi_signal(QString)), // PIN DLL->EXE
                 this, SLOT(pinkoodi_slot(QString)));
-
-
+    connect(pRestapidll, SIGNAL(loginSignal(QString)), //login success / fail
+                this, SLOT(login_slot(QString)));
 
 }
 
@@ -71,10 +72,11 @@ void MainWindow::pinkoodi_slot(QString pinkoodi)
 
 }
 
-void MainWindow::login_slot(QByteArray)
+void MainWindow::login_slot(QString)
 {
 
 }
+
 
 
 
