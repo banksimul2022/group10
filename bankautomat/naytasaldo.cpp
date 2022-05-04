@@ -8,6 +8,9 @@ naytasaldo::naytasaldo(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
+
 }
 
 naytasaldo::~naytasaldo()
@@ -15,8 +18,37 @@ naytasaldo::~naytasaldo()
     delete ui;
 }
 
+void naytasaldo::getAsiakas()
+{
+
+}
+
+void naytasaldo::getSaldo()
+{
+
+}
+
 void naytasaldo::on_palaaNaytasaldo_clicked()
 {
     close ();
 }
+
+void naytasaldo::slotAsiakas(QString)
+{
+
+}
+
+void naytasaldo::slotSaldo(QString saldo)
+{
+    Saldo = saldo;
+    ui->leSaldo->setText(Saldo);
+}
+
+void naytasaldo::slotTilitapahtumat(QString)
+{
+
+}
+
+
+
 

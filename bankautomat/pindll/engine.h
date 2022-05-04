@@ -24,6 +24,7 @@ public:
 signals:
        void pinkoodi_signal(QString);
 
+
 private slots:
     void on_a1_clicked();
     void on_a2_clicked();
@@ -46,6 +47,7 @@ private:
     QString setValue;
     QString hideValue;
     QString pinkoodi;
+
     int yritys = 3;
 
 

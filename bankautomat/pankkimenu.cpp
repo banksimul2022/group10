@@ -37,5 +37,8 @@ void pankkimenu::on_btnSelaa_clicked()
 void pankkimenu::on_btnLogout_clicked()
 {
     close ();
+    pnaytasaldo->close();
+    pnostarahaa->close();
+    pselaatilitapahtumia->close();
 }
 

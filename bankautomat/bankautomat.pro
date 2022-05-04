@@ -1,5 +1,6 @@
 QT       += core gui
 QT       += network
+QT       += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -42,8 +43,19 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/pindll/build/debug/ -lp
 INCLUDEPATH += $$PWD/pindll
 DEPENDPATH += $$PWD/pindll
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/build-restapidll-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/release/ -lrestapidll
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/build-restapidll-Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/ -lrestapidll
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/restapidll/build/release/ -lrestapidll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/restapidll/build/debug/ -lrestapidll
 
 INCLUDEPATH += $$PWD/restapidll
 DEPENDPATH += $$PWD/restapidll
+
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/rfidDl/build/release/ -lrfidDll
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/rfidDl/build/debug/ -lrfidDll
+
+INCLUDEPATH += $$PWD/rfidDl
+DEPENDPATH += $$PWD/rfidDl

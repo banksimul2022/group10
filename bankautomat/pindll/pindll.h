@@ -15,17 +15,18 @@ public:
     ~Pindll();
     void naytaPincodeUi(); // open pinUi
     void suljePincodeUi(); // close pinUi
-    void pinkoodi_vaarin();
+
 
 
 
 public slots:
         void pinkoodi_slot(QString);
+        void pinkoodi_vaarin();
 
 
 signals:
         void pinkoodi_signal(QString);
-
+        void wrongPinToUi();
 
 private:
     engine *pengine;

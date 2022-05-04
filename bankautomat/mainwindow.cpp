@@ -8,16 +8,28 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     pPindll = new Pindll(this);
+
     Ppankkimenu = new pankkimenu;
+
     pRestapidll = new Restapidll;
+
     timer = new QTimer;
 
 
     connect(pPindll, SIGNAL(pinkoodi_signal(QString)), // PIN DLL->EXE
                 this, SLOT(pinkoodi_slot(QString)));
+
     connect(pRestapidll, SIGNAL(loginSignal(QString)), //login success / fail
                 this, SLOT(login_slot(QString)));
+
+    connect(this, SIGNAL(wrongPinSignal()),
+                 pPindll, SLOT(pinkoodi_vaarin()));
+
+    connect(pRestapidll, SIGNAL(saldoToExe(QString)),
+                    this,SLOT(haesaldo(QString)));
+
 
 }
 
@@ -25,6 +37,7 @@ MainWindow::~MainWindow()
 {
 
     delete ui;
+
     delete Ppankkimenu;
     Ppankkimenu=nullptr;
 
@@ -33,6 +46,16 @@ MainWindow::~MainWindow()
 
     delete timer;
     timer=nullptr;
+
+}
+
+void MainWindow::haenimi(QString)
+{
+
+}
+
+void MainWindow::haesaldo(QString)
+{
 
 }
 
@@ -66,13 +89,32 @@ void MainWindow::getAsiakasSlot(QString)
 
 }
 
-
-void MainWindow::pinkoodi_slot(QString pinkoodi)
+void MainWindow::trueFalse()
 {
 
 }
 
-void MainWindow::login_slot(QString)
+void MainWindow::wrongPinSignal()
+{
+
+}
+
+
+void MainWindow::pinkoodi_slot(QString pinkoodi)
+{
+    pRestapidll->login("999-999-999", pinkoodi);
+
+    if(pinkoodi=="1234")
+    {
+        Ppankkimenu->exec();
+    }
+    else{
+
+    }
+
+}
+
+void MainWindow::login_slot(QByteArray truefalse)
 {
 
 }

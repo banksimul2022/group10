@@ -15,12 +15,13 @@ class RESTAPIDLL_EXPORT Restapidll : public QObject
 public:
     Restapidll(QObject * parent = nullptr);
     ~Restapidll();
-    void getSaldo(QString id);
-    void login(QString PIN);
-    void nosto(QString, QString, QString);
+    void getSaldo(QString);
+    void login(QString KortinNumero, QString PIN);
+    void nosto(QString, QString);
     void getTT10(QString);
 
 signals:
+    void saldoToExe(QString);
     void loginSignal(QString);
 private slots:
     void getSaldoSlot(QNetworkReply *reply);
@@ -34,6 +35,7 @@ private:
     QNetworkAccessManager *getTT10Manager;
     QNetworkReply *reply;
     QByteArray response_data;
+    QByteArray token;
 
 
 };
