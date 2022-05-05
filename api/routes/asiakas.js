@@ -23,6 +23,26 @@ router.get('/:id?',
   }
 });
 
+router.get('/nimi/:id?',
+ function(request, response) {
+  if (request.params.id) {
+    asiakas.getNimiById(request.params.id, function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  } else {
+    asiakas.getAll(function(err, dbResult) {
+      if (err) {
+        response.json(err);
+      } else {
+        response.json(dbResult);
+      }
+    });
+  }
+});
 
 router.post('/', 
 function(request, response) {
