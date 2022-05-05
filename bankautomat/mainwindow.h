@@ -6,9 +6,11 @@
 #include <QObject>
 #include <QTimer>
 #include "restapidll.h"
-#include "rfiddll.h"
+#include "naytasaldo.h"
+#include "selaatilitapahtumia.h"
 
-#include "pankkimenu.h"
+
+
 
 
 QT_BEGIN_NAMESPACE
@@ -39,6 +41,8 @@ private slots:
     void trueFalse();
     void wrongPinSignal();
 
+    void on_lenaytasaldo_clicked();
+
 signals:
     void asiakasSignal(QString);
 
@@ -46,11 +50,15 @@ signals:
 private:
     Ui::MainWindow *ui;
     Pindll *pPindll;
-    pankkimenu *Ppankkimenu;
+
     QTimer *timer;
     QString asiakas;
     QString valinta;
     Restapidll* pRestapidll;
+    naytasaldo *Pnaytasaldo;
+    selaatilitapahtumia *Pselaatilitapahtumia;
+
+
 
 
 };

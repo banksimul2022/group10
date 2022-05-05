@@ -15,21 +15,18 @@ SOURCES += \
     mainwindow.cpp \
     naytasaldo.cpp \
     nostarahaa.cpp \
-    pankkimenu.cpp \
     selaatilitapahtumia.cpp
 
 HEADERS += \
     mainwindow.h \
     naytasaldo.h \
     nostarahaa.h \
-    pankkimenu.h \
     selaatilitapahtumia.h
 
 FORMS += \
     mainwindow.ui \
     naytasaldo.ui \
     nostarahaa.ui \
-    pankkimenu.ui \
     selaatilitapahtumia.ui
 
 # Default rules for deployment.
@@ -50,7 +47,6 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/restapidll/build/debug/
 
 INCLUDEPATH += $$PWD/restapidll
 DEPENDPATH += $$PWD/restapidll
-
 
 
 

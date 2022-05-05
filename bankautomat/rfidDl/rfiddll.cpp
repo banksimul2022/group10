@@ -1,8 +1,7 @@
 #include "rfiddll.h"
 #include <QDebug>
 
-RfidDll::RfidDll(QObject * parent) :
-QObject{parent}, serialport(new QSerialPort)
+RfidDll::RfidDll(QObject * parent) : QObject{parent}, serialport(new QSerialPort)
 
 {
         serialport->setPortName("COM3");

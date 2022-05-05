@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <qdebug.h>
-#include <pankkimenu.h>
+#include <naytasaldo.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,9 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     pPindll = new Pindll(this);
 
-    Ppankkimenu = new pankkimenu;
-
     pRestapidll = new Restapidll;
+
+    Pnaytasaldo = new naytasaldo;
+
 
     timer = new QTimer;
 
@@ -21,14 +22,19 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pPindll, SIGNAL(pinkoodi_signal(QString)), // PIN DLL->EXE
                 this, SLOT(pinkoodi_slot(QString)));
 
-    connect(pRestapidll, SIGNAL(loginSignal(QString)), //login success / fail
-                this, SLOT(login_slot(QString)));
+    connect(pRestapidll, SIGNAL(loginSignal(QByteArray)), //login success / fail
+                this, SLOT(login_slot(QByteArray)));
 
     connect(this, SIGNAL(wrongPinSignal()),
                  pPindll, SLOT(pinkoodi_vaarin()));
 
     connect(pRestapidll, SIGNAL(saldoToExe(QString)),
                     this,SLOT(haesaldo(QString)));
+
+    connect(pRestapidll, SIGNAL(nimiToExe(QString)),
+                    this,SLOT(haenimi(QString)));
+
+
 
 
 }
@@ -38,8 +44,7 @@ MainWindow::~MainWindow()
 
     delete ui;
 
-    delete Ppankkimenu;
-    Ppankkimenu=nullptr;
+
 
     delete pPindll;
     pPindll = nullptr;
@@ -51,11 +56,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::haenimi(QString)
 {
+  // nimi = nimi+"";
+  // Ppankkimenu->asetaNimi(nimi);
+   pRestapidll->getNimi(QString());
 
 }
 
-void MainWindow::haesaldo(QString)
+void MainWindow::haesaldo(QString saldo)
 {
+    qDebug()<<"hae saldoo "+saldo;
+    //saldo = saldo+" $";
+    //Ppankkimenu->asetaSaldo(saldo);
+   // Pnaytasaldo->paivitaLeSaldo(saldo);
 
 }
 
@@ -106,7 +118,7 @@ void MainWindow::pinkoodi_slot(QString pinkoodi)
 
     if(pinkoodi=="1234")
     {
-        Ppankkimenu->exec();
+     pPindll->suljePincodeUi();
     }
     else{
 
@@ -116,10 +128,13 @@ void MainWindow::pinkoodi_slot(QString pinkoodi)
 
 void MainWindow::login_slot(QByteArray truefalse)
 {
-
+    qDebug()<<"login_slot"<<truefalse;
+    pRestapidll->setToken(truefalse);
 }
 
 
-
-
+void MainWindow::on_lenaytasaldo_clicked()
+{
+    pRestapidll->getSaldo("1");
+}
 

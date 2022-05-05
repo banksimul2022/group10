@@ -22,6 +22,8 @@ public:
 
     void getTilitapahtumat();
 
+    void paivitaLeSaldo(QString);
+
 private slots:
     void on_palaaNaytasaldo_clicked();
 

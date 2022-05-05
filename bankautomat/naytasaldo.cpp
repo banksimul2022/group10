@@ -28,6 +28,12 @@ void naytasaldo::getSaldo()
 
 }
 
+void naytasaldo::paivitaLeSaldo(QString saldo)
+{
+    ui->leSaldo->setText(saldo);
+
+}
+
 void naytasaldo::on_palaaNaytasaldo_clicked()
 {
     close ();

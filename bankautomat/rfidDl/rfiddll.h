@@ -11,7 +11,7 @@ class RFIDDLL_EXPORT RfidDll : public QObject
     Q_OBJECT
 
 public:
-    RfidDll(QObject *parent);
+    explicit RfidDll(QObject *parent = nullptr);
     ~RfidDll();
 
 signals:
