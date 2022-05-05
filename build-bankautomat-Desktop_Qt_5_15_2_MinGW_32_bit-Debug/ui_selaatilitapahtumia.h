@@ -23,29 +23,26 @@ class Ui_selaatilitapahtumia
 public:
     QPushButton *btnSeuraava;
     QPushButton *btnPalaatilitapahtumat;
-    QLineEdit *leTT5;
     QLineEdit *lineEdit_3;
     QLabel *label;
     QLabel *label_2;
     QPushButton *btnEdellinen;
+    QLabel *leTT5;
 
     void setupUi(QDialog *selaatilitapahtumia)
     {
         if (selaatilitapahtumia->objectName().isEmpty())
             selaatilitapahtumia->setObjectName(QString::fromUtf8("selaatilitapahtumia"));
-        selaatilitapahtumia->resize(400, 300);
+        selaatilitapahtumia->resize(766, 541);
         QFont font;
         font.setPointSize(11);
         selaatilitapahtumia->setFont(font);
         btnSeuraava = new QPushButton(selaatilitapahtumia);
         btnSeuraava->setObjectName(QString::fromUtf8("btnSeuraava"));
-        btnSeuraava->setGeometry(QRect(220, 210, 75, 23));
+        btnSeuraava->setGeometry(QRect(520, 380, 101, 41));
         btnPalaatilitapahtumat = new QPushButton(selaatilitapahtumia);
         btnPalaatilitapahtumat->setObjectName(QString::fromUtf8("btnPalaatilitapahtumat"));
-        btnPalaatilitapahtumat->setGeometry(QRect(310, 240, 75, 23));
-        leTT5 = new QLineEdit(selaatilitapahtumia);
-        leTT5->setObjectName(QString::fromUtf8("leTT5"));
-        leTT5->setGeometry(QRect(120, 90, 151, 101));
+        btnPalaatilitapahtumat->setGeometry(QRect(630, 480, 75, 23));
         lineEdit_3 = new QLineEdit(selaatilitapahtumia);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
         lineEdit_3->setGeometry(QRect(120, 10, 231, 20));
@@ -57,7 +54,10 @@ public:
         label_2->setGeometry(QRect(20, 10, 91, 21));
         btnEdellinen = new QPushButton(selaatilitapahtumia);
         btnEdellinen->setObjectName(QString::fromUtf8("btnEdellinen"));
-        btnEdellinen->setGeometry(QRect(110, 210, 75, 23));
+        btnEdellinen->setGeometry(QRect(240, 380, 101, 41));
+        leTT5 = new QLabel(selaatilitapahtumia);
+        leTT5->setObjectName(QString::fromUtf8("leTT5"));
+        leTT5->setGeometry(QRect(170, 110, 531, 221));
 
         retranslateUi(selaatilitapahtumia);
 
@@ -72,6 +72,7 @@ public:
         label->setText(QCoreApplication::translate("selaatilitapahtumia", "Tilitapahtumat", nullptr));
         label_2->setText(QCoreApplication::translate("selaatilitapahtumia", "Omat tiedot", nullptr));
         btnEdellinen->setText(QCoreApplication::translate("selaatilitapahtumia", "Edellinen", nullptr));
+        leTT5->setText(QString());
     } // retranslateUi
 
 };

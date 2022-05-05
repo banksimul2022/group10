@@ -61,9 +61,4 @@ void naytasaldo::slotTilitapahtumat(QString TT10)
     ui->leTT10->setText(tt10);
 }
 
-/*void naytasaldo::on_naytaTT10_clicked()
-{
-    qDebug()<<"naytaTT10";
-    pRestapidll->getTT10("1");
-}
-*/
+

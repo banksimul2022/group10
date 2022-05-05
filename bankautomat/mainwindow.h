@@ -27,6 +27,8 @@ public slots:
     void haenimi(QString);
     void haesaldo(QString);
     void haeTT10(QString);
+    void haeNosto(QString); //uusi
+    void haeTT5(QString);
 
 
 private slots:

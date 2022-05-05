@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <qdebug.h>
 #include <naytasaldo.h>
+#include <nostarahaa.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,6 +41,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(pRestapidll, SIGNAL(TT10ToExe(QString)),
                     this,SLOT(haeTT10(QString)));
+
+    connect(pRestapidll, SIGNAL(nostoToExe(QString)),
+                    this,SLOT(haeTT10(QString)));
+
+    connect(pRestapidll, SIGNAL(TT5ToExe(QString)),
+                    this,SLOT(haeTT5(QString)));
 
 
 
@@ -90,13 +97,20 @@ void MainWindow::haeTT10(QString TT10)
 
 }
 
+void MainWindow::haeTT5(QString TT5)
+{
+    Pselaatilitapahtumia->paivitaTT5(TT5);
+}
+
+void MainWindow::haeNosto(QString)
+{
+
+}
 
 void MainWindow::on_kirjaudusisaan_clicked()
 {
 
     pPindll->naytaPincodeUi();
-
-
 
 }
 

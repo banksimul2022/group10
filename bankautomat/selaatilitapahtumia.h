@@ -16,20 +16,26 @@ class selaatilitapahtumia : public QDialog
 public:
     explicit selaatilitapahtumia(QWidget *parent = nullptr);
     ~selaatilitapahtumia();
-    void paivitaLeClient(QString);
 
-private slots:
-    void on_btnPalaatilitapahtumat_clicked();
+    Restapidll *pRestapidll; //uus
+    void paivitaLeClient(QString);
 
     void on_btnSeuraava_clicked();
 
     void on_btnEdellinen_clicked();
 
+    void paivitaTT5(QString); //uus
+
+private slots:
+    void on_btnPalaatilitapahtumat_clicked();
+
     void slotClient(QString);
 
+    void slotTT5(QString); //uus
 private:
     Ui::selaatilitapahtumia *ui;
     QString client;
+    QString tt5; //uus
 };
 
 #endif // SELAATILITAPAHTUMIA_H

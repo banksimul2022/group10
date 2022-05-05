@@ -16,6 +16,8 @@ public:
     explicit nostarahaa(QWidget *parent = nullptr);
     ~nostarahaa();
 
+    void paivitaNosto(QString);
+
 private slots:
     void on_palaaNostarahaa_clicked();
 
@@ -31,8 +33,11 @@ private slots:
 
     void on_btn500Eur_clicked();
 
+    void slotNosto(QString);
+
 private:
     Ui::nostarahaa *ui;
+    QString nosto;
 };
 
 #endif // NOSTARAHAA_H
