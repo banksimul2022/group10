@@ -34,9 +34,33 @@ void naytasaldo::paivitaLeSaldo(QString saldo)
 
 }
 
+void naytasaldo::slotSaldo(QString saldo)
+{
+    Saldo = saldo;
+    ui->leSaldo->setText(Saldo);
+}
+
+void naytasaldo::paivitaLeClient1(QString Client1)
+{
+    ui->lineEditNimi->setText(Client1);
+}
+
+void naytasaldo::slotClient1(QString Client1)
+{
+    client1 = Client1;
+    ui->lineEditNimi->setText(client1);
+}
+
+
 void naytasaldo::paivitaLeTT10(QString TT10)
 {
-    ui->leTT10->setText(TT10);
+    ui->ttlabel->setText(TT10);
+}
+
+void naytasaldo::slotTilitapahtumat(QString TT10)
+{
+    tt10 = TT10;
+    ui->ttlabel->setText(tt10);
 }
 
 void naytasaldo::on_palaaNaytasaldo_clicked()
@@ -49,16 +73,13 @@ void naytasaldo::slotAsiakas(QString)
 
 }
 
-void naytasaldo::slotSaldo(QString saldo)
+
+
+
+
+/*void naytasaldo::on_naytaTT10_clicked()
 {
-    Saldo = saldo;
-    ui->leSaldo->setText(Saldo);
+    qDebug()<<"naytaTT10";
+    pRestapidll->getTT10("1");
 }
-
-void naytasaldo::slotTilitapahtumat(QString TT10)
-{
-    tt10 = TT10;
-    ui->leTT10->setText(tt10);
-}
-
-
+*/

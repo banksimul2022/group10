@@ -150,16 +150,6 @@
     <string>  Syötä pinkoodi</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="vaarapin_label">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>120</y>
-     <width>113</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>

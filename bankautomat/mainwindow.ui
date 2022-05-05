@@ -79,16 +79,6 @@
      <string>Näytä Saldo</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>40</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

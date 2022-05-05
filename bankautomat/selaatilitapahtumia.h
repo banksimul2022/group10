@@ -17,25 +17,34 @@ public:
     explicit selaatilitapahtumia(QWidget *parent = nullptr);
     ~selaatilitapahtumia();
 
-    Restapidll *pRestapidll; //uus
     void paivitaLeClient(QString);
 
     void on_btnSeuraava_clicked();
 
     void on_btnEdellinen_clicked();
 
-    void paivitaTT5(QString); //uus
+    void paivitaTT5(QString);
+
+    void paivitaTT5eka(QString);
+
 
 private slots:
     void on_btnPalaatilitapahtumat_clicked();
 
     void slotClient(QString);
 
-    void slotTT5(QString); //uus
+    void slotTT5(QString);
+
+    void slotTT5eka(QString);
+
+
+
 private:
     Ui::selaatilitapahtumia *ui;
     QString client;
-    QString tt5; //uus
+    QString tt5;
+    QString tt5eka;
+    Restapidll *pRestapidll;
 };
 
 #endif // SELAATILITAPAHTUMIA_H
