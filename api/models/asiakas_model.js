@@ -4,6 +4,9 @@ const asiakas = {
   getById: function(id, callback) {
     return db.query('select * from asiakas where idAsiakas=?', [id], callback);
   },
+  getNimiById: function(id, callback) {
+    return db.query('select nimi from asiakas where idAsiakas=?', [id], callback);
+  },
   getAll: function(callback) {
     return db.query('select * from asiakas', callback);
   },
