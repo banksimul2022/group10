@@ -173,7 +173,7 @@ debug/moc_restapidll.cpp: ../restapidll/restapidll.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
-		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QObject.h \
+		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QObject \
 		../../../../Qt/5.15.2/mingw81_32/include/QtNetwork/QtNetwork \
 		../../../../Qt/5.15.2/mingw81_32/include/QtNetwork/QtNetworkDepends \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QtCore \
@@ -228,7 +228,6 @@ debug/moc_restapidll.cpp: ../restapidll/restapidll.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qexception.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfileselector.h \
-		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QObject \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfilesystemwatcher.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfinalstate.h \
@@ -461,7 +460,7 @@ debug/restapidll.o: ../restapidll/restapidll.cpp ../restapidll/restapidll.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
-		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QObject.h \
+		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QObject \
 		../../../../Qt/5.15.2/mingw81_32/include/QtNetwork/QtNetwork \
 		../../../../Qt/5.15.2/mingw81_32/include/QtNetwork/QtNetworkDepends \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QtCore \
@@ -516,7 +515,6 @@ debug/restapidll.o: ../restapidll/restapidll.cpp ../restapidll/restapidll.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qexception.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfactoryinterface.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfileselector.h \
-		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QObject \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfilesystemwatcher.h \
 		../../../../Qt/5.15.2/mingw81_32/include/QtCore/qfinalstate.h \

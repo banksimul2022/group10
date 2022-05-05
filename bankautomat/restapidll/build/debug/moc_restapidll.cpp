@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Restapidll_t {
-    QByteArrayData data[18];
-    char stringdata0[190];
+    QByteArrayData data[19];
+    char stringdata0[202];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,22 +41,24 @@ QT_MOC_LITERAL(5, 46, 9), // "TT10ToExe"
 QT_MOC_LITERAL(6, 56, 8), // "TT5ToExe"
 QT_MOC_LITERAL(7, 65, 11), // "TT5ekaToExe"
 QT_MOC_LITERAL(8, 77, 9), // "nimiToExe"
-QT_MOC_LITERAL(9, 87, 12), // "getSaldoSlot"
-QT_MOC_LITERAL(10, 100, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(11, 115, 5), // "reply"
-QT_MOC_LITERAL(12, 121, 9), // "loginSlot"
-QT_MOC_LITERAL(13, 131, 9), // "nostoSlot"
-QT_MOC_LITERAL(14, 141, 11), // "getTT10Slot"
-QT_MOC_LITERAL(15, 153, 10), // "getTT5Slot"
-QT_MOC_LITERAL(16, 164, 13), // "getTT5ekaSlot"
-QT_MOC_LITERAL(17, 178, 11) // "getNimiSlot"
+QT_MOC_LITERAL(9, 87, 11), // "sendAsiakas"
+QT_MOC_LITERAL(10, 99, 12), // "getSaldoSlot"
+QT_MOC_LITERAL(11, 112, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(12, 127, 5), // "reply"
+QT_MOC_LITERAL(13, 133, 9), // "loginSlot"
+QT_MOC_LITERAL(14, 143, 9), // "nostoSlot"
+QT_MOC_LITERAL(15, 153, 11), // "getTT10Slot"
+QT_MOC_LITERAL(16, 165, 10), // "getTT5Slot"
+QT_MOC_LITERAL(17, 176, 13), // "getTT5ekaSlot"
+QT_MOC_LITERAL(18, 190, 11) // "getNimiSlot"
 
     },
     "Restapidll\0saldoToExe\0\0loginSignal\0"
     "summaToExe\0TT10ToExe\0TT5ToExe\0TT5ekaToExe\0"
-    "nimiToExe\0getSaldoSlot\0QNetworkReply*\0"
-    "reply\0loginSlot\0nostoSlot\0getTT10Slot\0"
-    "getTT5Slot\0getTT5ekaSlot\0getNimiSlot"
+    "nimiToExe\0sendAsiakas\0getSaldoSlot\0"
+    "QNetworkReply*\0reply\0loginSlot\0nostoSlot\0"
+    "getTT10Slot\0getTT5Slot\0getTT5ekaSlot\0"
+    "getNimiSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -66,30 +68,31 @@ static const uint qt_meta_data_Restapidll[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       7,       // signalCount
+       8,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   84,    2, 0x06 /* Public */,
-       3,    1,   87,    2, 0x06 /* Public */,
-       4,    1,   90,    2, 0x06 /* Public */,
-       5,    1,   93,    2, 0x06 /* Public */,
-       6,    1,   96,    2, 0x06 /* Public */,
-       7,    1,   99,    2, 0x06 /* Public */,
-       8,    1,  102,    2, 0x06 /* Public */,
+       1,    1,   89,    2, 0x06 /* Public */,
+       3,    1,   92,    2, 0x06 /* Public */,
+       4,    1,   95,    2, 0x06 /* Public */,
+       5,    1,   98,    2, 0x06 /* Public */,
+       6,    1,  101,    2, 0x06 /* Public */,
+       7,    1,  104,    2, 0x06 /* Public */,
+       8,    1,  107,    2, 0x06 /* Public */,
+       9,    1,  110,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,  105,    2, 0x08 /* Private */,
-      12,    1,  108,    2, 0x08 /* Private */,
-      13,    1,  111,    2, 0x08 /* Private */,
-      14,    1,  114,    2, 0x08 /* Private */,
-      15,    1,  117,    2, 0x08 /* Private */,
-      16,    1,  120,    2, 0x08 /* Private */,
-      17,    1,  123,    2, 0x08 /* Private */,
+      10,    1,  113,    2, 0x08 /* Private */,
+      13,    1,  116,    2, 0x08 /* Private */,
+      14,    1,  119,    2, 0x08 /* Private */,
+      15,    1,  122,    2, 0x08 /* Private */,
+      16,    1,  125,    2, 0x08 /* Private */,
+      17,    1,  128,    2, 0x08 /* Private */,
+      18,    1,  131,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    2,
@@ -99,15 +102,16 @@ static const uint qt_meta_data_Restapidll[] = {
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString,    2,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 11,   12,
+    QMetaType::Void, 0x80000000 | 11,   12,
 
        0        // eod
 };
@@ -125,25 +129,19 @@ void Restapidll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->TT5ToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->TT5ekaToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 6: _t->nimiToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 7: _t->getSaldoSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 8: _t->loginSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 9: _t->nostoSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 10: _t->getTT10Slot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 11: _t->getTT5Slot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 12: _t->getTT5ekaSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 13: _t->getNimiSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 7: _t->sendAsiakas((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 8: _t->getSaldoSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 9: _t->loginSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 10: _t->nostoSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 11: _t->getTT10Slot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 12: _t->getTT5Slot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 13: _t->getTT5ekaSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 14: _t->getNimiSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 7:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-            case 0:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
-            }
-            break;
         case 8:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
@@ -180,6 +178,13 @@ void Restapidll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
             break;
         case 13:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
+            }
+            break;
+        case 14:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -238,6 +243,13 @@ void Restapidll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 return;
             }
         }
+        {
+            using _t = void (Restapidll::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Restapidll::sendAsiakas)) {
+                *result = 7;
+                return;
+            }
+        }
     }
 }
 
@@ -270,13 +282,13 @@ int Restapidll::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }
@@ -328,6 +340,13 @@ void Restapidll::nimiToExe(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+
+// SIGNAL 7
+void Restapidll::sendAsiakas(QString _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

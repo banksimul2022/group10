@@ -15,6 +15,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     Pnaytasaldo = new naytasaldo;
 
+    Pnostarahaa = new nostarahaa;
+
+    Pselaatilitapahtumia = new selaatilitapahtumia;
+
 
     timer = new QTimer;
 
@@ -34,6 +38,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pRestapidll, SIGNAL(nimiToExe(QString)),
                     this,SLOT(haenimi(QString)));
 
+    connect(pRestapidll, SIGNAL(nimiToExe(QString)),
+                    this,SLOT(haenimi1(QString)));
+
+    connect(pRestapidll, SIGNAL(TT10ToExe(QString)),
+                    this,SLOT(haeTT10(QString)));
+
+    connect(pRestapidll, SIGNAL(TT5ToExe(QString)),
+                    this,SLOT(haeTT5(QString)));
+
 
 
 
@@ -44,22 +57,31 @@ MainWindow::~MainWindow()
 
     delete ui;
 
-
-
     delete pPindll;
     pPindll = nullptr;
 
     delete timer;
     timer=nullptr;
 
+    delete Pnostarahaa;
+    Pnostarahaa = nullptr;
+
+    delete Pselaatilitapahtumia;
+    Pselaatilitapahtumia = nullptr;
+
+    delete Pnaytasaldo;
+    Pnaytasaldo = nullptr;
 }
 
-void MainWindow::haenimi(QString)
+void MainWindow::haenimi(QString Client)
 {
-  // nimi = nimi+"";
-  // Ppankkimenu->asetaNimi(nimi);
-   pRestapidll->getNimi(QString());
+    Pselaatilitapahtumia->paivitaLeClient(Client);
 
+}
+
+void MainWindow::haenimi1(QString Client1)
+{
+    Pnaytasaldo->paivitaLeClient1(Client1);
 }
 
 void MainWindow::haesaldo(QString saldo)
@@ -67,7 +89,22 @@ void MainWindow::haesaldo(QString saldo)
     qDebug()<<"hae saldoo "+saldo;
     //saldo = saldo+" $";
     //Ppankkimenu->asetaSaldo(saldo);
-   // Pnaytasaldo->paivitaLeSaldo(saldo);
+    Pnaytasaldo->show();
+    Pnaytasaldo->paivitaLeSaldo(saldo);
+
+
+}
+
+void MainWindow::haeTT10(QString TT10)
+{
+    qDebug()<<"hae 10 tilitapahtumaa"+TT10;
+    Pnaytasaldo->paivitaLeTT10(TT10);
+
+}
+
+void MainWindow::haeTT5(QString TT5)
+{
+    Pselaatilitapahtumia->on_btnSeuraava_clicked(TT5);
 
 }
 
@@ -136,5 +173,26 @@ void MainWindow::login_slot(QByteArray truefalse)
 void MainWindow::on_lenaytasaldo_clicked()
 {
     pRestapidll->getSaldo("1");
+    pRestapidll->getTT10("1");
+    pRestapidll->getNimi("1");
+}
+
+void MainWindow::on_nostarahaa_clicked()
+{
+    Pnostarahaa->show();
+}
+
+
+void MainWindow::on_logoff_clicked()
+{
+    close();
+}
+
+
+void MainWindow::on_selaaTT_clicked()
+{
+    Pselaatilitapahtumia->show();
+    pRestapidll->getNimi("1");
+    pRestapidll->getTT5("1");
 }
 

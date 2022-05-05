@@ -18,11 +18,12 @@ public:
     void getSaldo(QString tilinumero);
     void login(QString KortinNumero, QString PIN);
     void nosto(QString Summa);
-    void getTT10(QString);
+    void getTT10(QString tilinum);
     void getTT5(QString);
     void getTT5eka(QString);
-    void getNimi(QString);
+    void getNimi(QString id);
     void setToken(QByteArray);
+    void getAsiakas();
 
 signals:
     void saldoToExe(QString);
@@ -32,6 +33,7 @@ signals:
     void TT5ToExe(QString); //uusi
     void TT5ekaToExe(QString); //uusi
     void nimiToExe(QString); //uusi
+    void sendAsiakas(QString);
 
 private slots:
     void getSaldoSlot(QNetworkReply *reply);

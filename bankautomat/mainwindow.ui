@@ -17,76 +17,66 @@
    <widget class="QPushButton" name="kirjaudusisaan">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>310</y>
-      <width>221</width>
-      <height>91</height>
+      <x>170</x>
+      <y>150</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Kirjaudu sisään</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="logoff">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>120</y>
-      <width>75</width>
-      <height>23</height>
+      <x>300</x>
+      <y>370</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>kirjaudu ulos</string>
+     <string>Kirjaudu ulos</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="nostarahaa">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>120</y>
-      <width>75</width>
-      <height>23</height>
+      <x>420</x>
+      <y>150</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>nostarahaa</string>
+     <string>Nosta rahaa</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="selaaTT">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>180</y>
-      <width>101</width>
-      <height>31</height>
+      <x>170</x>
+      <y>240</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>selaa tilitapahtumia</string>
+     <string>Selaa tilitapahtumia</string>
     </property>
    </widget>
    <widget class="QPushButton" name="lenaytasaldo">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>190</y>
-      <width>75</width>
-      <height>23</height>
+      <x>420</x>
+      <y>240</y>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>naytasaldo</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>10</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
+     <string>Näytä Saldo</string>
     </property>
    </widget>
   </widget>

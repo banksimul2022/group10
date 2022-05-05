@@ -1,0 +1,11 @@
+debug/main.o
+debug/mainwindow.o
+debug/naytasaldo.o
+debug/nostarahaa.o
+debug/pankkimenu.o
+debug/selaatilitapahtumia.o
+debug/moc_mainwindow.o
+debug/moc_naytasaldo.o
+debug/moc_nostarahaa.o
+debug/moc_pankkimenu.o
+debug/moc_selaatilitapahtumia.o

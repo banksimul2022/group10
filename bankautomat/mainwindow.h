@@ -8,9 +8,7 @@
 #include "restapidll.h"
 #include "naytasaldo.h"
 #include "selaatilitapahtumia.h"
-
-
-
+#include "nostarahaa.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -24,10 +22,13 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+     Restapidll* pRestapidll;
 public slots:
     void haenimi(QString);
+    void haenimi1(QString);
     void haesaldo(QString);
+    void haeTT10(QString);
+    void haeTT5(QString);
 
 
 private slots:
@@ -43,6 +44,12 @@ private slots:
 
     void on_lenaytasaldo_clicked();
 
+    void on_nostarahaa_clicked();
+
+    void on_logoff_clicked();
+
+    void on_selaaTT_clicked();
+
 signals:
     void asiakasSignal(QString);
 
@@ -50,13 +57,13 @@ signals:
 private:
     Ui::MainWindow *ui;
     Pindll *pPindll;
-
     QTimer *timer;
     QString asiakas;
     QString valinta;
-    Restapidll* pRestapidll;
     naytasaldo *Pnaytasaldo;
     selaatilitapahtumia *Pselaatilitapahtumia;
+    nostarahaa *Pnostarahaa;
+
 
 
 

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <qstring.h>
+#include "restapidll.h"
 
 namespace Ui {
 class selaatilitapahtumia;
@@ -15,16 +16,32 @@ class selaatilitapahtumia : public QDialog
 public:
     explicit selaatilitapahtumia(QWidget *parent = nullptr);
     ~selaatilitapahtumia();
+    void paivitaLeClient(QString);
+
+    void on_btnSeuraava_clicked(QString);
+
+    void on_btnEdellinen_clicked();
+
+    void paivitaTT5(QString);
+
+
+
+
 
 private slots:
     void on_btnPalaatilitapahtumat_clicked();
 
-    void on_btnSeuraava_clicked();
+    void slotClient(QString);
 
-    void on_btnEdellinen_clicked();
+    void slotTT5(QString);
+
+
 
 private:
     Ui::selaatilitapahtumia *ui;
+    QString client;
+    QString tt5;
+    Restapidll *pRestapidll;
 };
 
 #endif // SELAATILITAPAHTUMIA_H

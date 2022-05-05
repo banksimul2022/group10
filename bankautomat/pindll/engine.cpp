@@ -126,7 +126,7 @@ engine::engine(QWidget *parent) :
         timer->start(10000);
         pinkoodi.clear();
         ui->lineEdit->clear();
-        ui->vaarapin_label->clear();
+
     }
 
     void engine::aika_loppu()
@@ -136,15 +136,6 @@ engine::engine(QWidget *parent) :
 
     void engine::pinkoodi_vaarin()
     {
-        yritys--;
-        if (yritys == 0)
-        {
-            this->close();
-            ui->vaarapin_label->clear();
-            yritys = 3;
-        }
-        ui->vaarapin_label->clear();
-        pinkoodi.clear();
-        ui->vaarapin_label->setText("Pinkoodi vaarin" + QString::number(yritys) + "yritysta jaljella");
+
 
     }
