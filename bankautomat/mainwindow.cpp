@@ -1,81 +1,92 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-<<<<<<< HEAD
-#include <QObject>
-=======
 #include <qdebug.h>
-#include <pankkimenu.h>
->>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
+#include <naytasaldo.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-<<<<<<< HEAD
-    pKirjaudusisaan = new kirjaudusisaan(this);
 
-    serialPort = new Rfid(this);
-
-    connect(serialPort, SIGNAL(korttiIdSignal(QByteArray)),
-            this, SLOT(korttiIdSlot(QByteArray)));
-=======
     pPindll = new Pindll(this);
-    Ppankkimenu = new pankkimenu;
+
+    pRestapidll = new Restapidll;
+
+    Pnaytasaldo = new naytasaldo;
+
+    Pnostarahaa = new nostarahaa;
+
+    Pselaatilitapahtumia = new selaatilitapahtumia;
+
+
     timer = new QTimer;
 
 
-    connect(pPindll, SIGNAL(signalPincode(QString)), // PIN DLL->EXE
-                this, SLOT(receivePincode(QString)));
+    connect(pPindll, SIGNAL(pinkoodi_signal(QString)), // PIN DLL->EXE
+                this, SLOT(pinkoodi_slot(QString)));
+
+    connect(pRestapidll, SIGNAL(loginSignal(QByteArray)), //login success / fail
+                this, SLOT(login_slot(QByteArray)));
 
     connect(this, SIGNAL(wrongPinSignal()),
-                 pPindll, SLOT(exeVaaraPin()));
+                 pPindll, SLOT(pinkoodi_vaarin()));
 
-    connect(this, SIGNAL(cardLockWarning()),
-                 pPindll, SLOT(exeKortinLukitusVaroitus()));
+    connect(pRestapidll, SIGNAL(saldoToExe(QString)),
+                    this,SLOT(haesaldo(QString)));
 
-    connect(this, SIGNAL(accountIDtoMainWindow(QString)),
-                Ppankkimenu, SLOT(receiveAccountIDfromLogin(QString)));
+    connect(pRestapidll, SIGNAL(nimiToExe(QString)),
+                    this,SLOT(haenimi(QString)));
 
-    connect(this, SIGNAL(clientIDtoMainWindow(QString)),
-                Ppankkimenu, SLOT(receiveCLientIDfromLogin(QString)));
-
-    connect(this, SIGNAL(MainTimerSignal()),
-                Ppankkimenu, SLOT(startMainTimer()));
-
-    connect(pPindll, SIGNAL(resetLoginTimerSignal()),
-                this, SLOT(resetTimer()));
-
-    connect(timer, SIGNAL(timeout()),
-                this, SLOT(loginIdleSlot()));
-
-    connect(pPindll, SIGNAL(cancelPincodeLogin()),
-                 this, SLOT(loginIdleSlot()));
-
-    connect(this, SIGNAL(wrongPinSignal()),
-                 pPindll, SLOT(exeWrongPin()));
-
-        connect(this, SIGNAL(cardLockWarning()),
-                pPindll, SLOT(exeCardLockWarning()));
+    connect(pRestapidll, SIGNAL(TT10ToExe(QString)),
+                    this,SLOT(haeTT10(QString)));
 
 
->>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
+
+
 }
 
 MainWindow::~MainWindow()
 {
-<<<<<<< HEAD
-    delete serialPort;
-=======
 
->>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
     delete ui;
-    delete Ppankkimenu;
-    Ppankkimenu=nullptr;
 
     delete pPindll;
     pPindll = nullptr;
 
+    delete timer;
+    timer=nullptr;
+
+    delete Pnostarahaa;
+    Pnostarahaa = nullptr;
+
+    delete Pselaatilitapahtumia;
+    Pselaatilitapahtumia = nullptr;
+
+    delete Pnaytasaldo;
+    Pnaytasaldo = nullptr;
+}
+
+void MainWindow::haenimi(QString Client)
+{
+    Pselaatilitapahtumia->paivitaLeClient(Client);
+
+}
+
+void MainWindow::haesaldo(QString saldo)
+{
+    qDebug()<<"hae saldoo "+saldo;
+    //saldo = saldo+" $";
+    //Ppankkimenu->asetaSaldo(saldo);
+    Pnaytasaldo->show();
+    Pnaytasaldo->paivitaLeSaldo(saldo);
+
+}
+
+void MainWindow::haeTT10(QString TT10)
+{
+    qDebug()<<"hae 10 tilitapahtumaa"+TT10;
+    Pnaytasaldo->paivitaLeTT10(TT10);
 
 }
 
@@ -86,53 +97,82 @@ void MainWindow::on_kirjaudusisaan_clicked()
     pPindll->naytaPincodeUi();
 
 
+
 }
 
-<<<<<<< HEAD
-void MainWindow::korttiIdSlot(QByteArray)
+void MainWindow::RFID_slot(QByteArray)
 {
-   ui->kirjaudusisaan->setText("toimiiko");
+    pPindll->naytaPincodeUi();
 }
 
-=======
-void MainWindow::receiveLogin(QString)
+void MainWindow::startTimer()
 {
-    qDebug() << "receiveLogin() in EXE";
 
-    if(loginTries == 3 || cardLocked == '1')
-   {
-            emit cardLockWarning();
-   }
-    else {
-        emit wrongPinSignal();
-        loginTries++;
+}
+
+void MainWindow::tiliValittuSlot(QString)
+{
+
+}
+
+void MainWindow::getAsiakasSlot(QString)
+{
+
+}
+
+void MainWindow::trueFalse()
+{
+
+}
+
+void MainWindow::wrongPinSignal()
+{
+
+}
+
+
+void MainWindow::pinkoodi_slot(QString pinkoodi)
+{
+    pRestapidll->login("999-999-999", pinkoodi);
+
+    if(pinkoodi=="1234")
+    {
+     pPindll->suljePincodeUi();
     }
-    if(pincode == "1111" && cardLocked == '0')
-        {
-            delete pPindll;
-            pPindll = nullptr;
-            Ppankkimenu->show();
-            timer->stop();
-            loginTries = 1;
-        }
+    else{
 
+    }
 
 }
 
-void MainWindow::receivePincode(QString pin)
+void MainWindow::login_slot(QByteArray truefalse)
 {
-        pincode = pin;
-        qDebug() << "receivePincode() in EXE" << pincode;
-        if(pin=="1111")
-        {
-            Ppankkimenu->exec();
-        }
-        else{
-            pPindll->exeVaaraPin();
-        }
-
-
+    qDebug()<<"login_slot"<<truefalse;
+    pRestapidll->setToken(truefalse);
 }
 
 
->>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
+void MainWindow::on_lenaytasaldo_clicked()
+{
+    pRestapidll->getSaldo("1");
+    pRestapidll->getTT10("1");
+}
+
+void MainWindow::on_nostarahaa_clicked()
+{
+    Pnostarahaa->show();
+}
+
+
+void MainWindow::on_logoff_clicked()
+{
+    close();
+}
+
+
+void MainWindow::on_selaaTT_clicked()
+{
+    Pselaatilitapahtumia->show();
+    pRestapidll->getNimi("1");
+}
+

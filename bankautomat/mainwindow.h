@@ -1,17 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include <QMainWindow>
-<<<<<<< HEAD
-#include "kirjaudusisaan.h"
-#include "rfid.h"
-=======
 #include "pindll.h"
-#include "pankkimenu.h"
 #include <QObject>
 #include <QTimer>
+#include "restapidll.h"
+#include "naytasaldo.h"
+#include "selaatilitapahtumia.h"
+#include "nostarahaa.h"
 
 
->>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,42 +23,50 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void haenimi(QString);
+    void haesaldo(QString);
+    void haeTT10(QString);
+
+
 private slots:
     void on_kirjaudusisaan_clicked();
-    void korttiIdSlot(QByteArray);
-
-signals:
-
-    void korttiIdSignal(QByteArray);
-
-public slots:
-    void receiveLogin(QString);
-    void receivePincode(QString);
-
-
-signals:
+    void pinkoodi_slot(QString);
+    void login_slot(QByteArray);
+    void RFID_slot(QByteArray);
+    void startTimer();
+    void tiliValittuSlot(QString);
+    void getAsiakasSlot(QString);
+    void trueFalse();
     void wrongPinSignal();
-    void cardLockWarning();
-    void clientIDtoMainWindow(QString);
-    void accountIDtoMainWindow(QString);
 
+    void on_lenaytasaldo_clicked();
+
+    void on_nostarahaa_clicked();
+
+    void on_logoff_clicked();
+
+    void on_selaaTT_clicked();
+
+signals:
+    void asiakasSignal(QString);
 
 
 private:
     Ui::MainWindow *ui;
-<<<<<<< HEAD
-    kirjaudusisaan * pKirjaudusisaan;
-    Rfid *serialPort;
-=======
     Pindll *pPindll;
-    pankkimenu *Ppankkimenu;
-    QTimer *timer;
-    QString pincode;
-    QString cardLocked;
-    QString cardnumber;
-    short loginTries = 1;
 
->>>>>>> 478b26c537a8bacbe2f1c144f34841a530b94df7
+    QTimer *timer;
+    QString asiakas;
+    QString valinta;
+    Restapidll* pRestapidll;
+    naytasaldo *Pnaytasaldo;
+    selaatilitapahtumia *Pselaatilitapahtumia;
+    nostarahaa *Pnostarahaa;
+
+
+
+
 
 };
 #endif // MAINWINDOW_H
