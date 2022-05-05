@@ -119,6 +119,9 @@ engine::engine(QWidget *parent) :
     void engine::on_cancel_clicked()
     {
         this->close();
+        pinkoodi.clear();
+        ui->lineEdit->clear();
+
     }
 
     void engine::on_clear_clicked()

@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <qdebug.h>
 #include <naytasaldo.h>
-#include <nostarahaa.h>
+#include <selaatilitapahtumia.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
     Pnostarahaa = new nostarahaa;
 
     Pselaatilitapahtumia = new selaatilitapahtumia;
+
+    pRestapidll = new Restapidll;
+
+    pRFIDdll = new RfidDll;
 
 
     timer = new QTimer;
@@ -39,15 +43,20 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pRestapidll, SIGNAL(nimiToExe(QString)),
                     this,SLOT(haenimi(QString)));
 
+    connect(pRestapidll, SIGNAL(nimiToExe(QString)),
+                    this,SLOT(haenimi1(QString)));
+
     connect(pRestapidll, SIGNAL(TT10ToExe(QString)),
                     this,SLOT(haeTT10(QString)));
 
-    connect(pRestapidll, SIGNAL(nostoToExe(QString)),
-                    this,SLOT(haeTT10(QString)));
-
-    connect(pRestapidll, SIGNAL(TT5ToExe(QString)), //uus
+    connect(pRestapidll, SIGNAL(TT5ToExe(QString)),
                     this,SLOT(haeTT5(QString)));
 
+    connect(pRestapidll, SIGNAL(TT5ekaToExe(QString)),
+                    this,SLOT(haeTT5eka(QString)));
+
+    connect(pRFIDdll, SIGNAL(lahetaid(QByteArray)),
+                    this,SLOT(RFID_slot(QByteArray)));
 
 
 
@@ -72,6 +81,12 @@ MainWindow::~MainWindow()
 
     delete Pnaytasaldo;
     Pnaytasaldo = nullptr;
+
+    delete pRestapidll;
+    pRestapidll = nullptr;
+
+    delete pRFIDdll;
+    pRFIDdll = nullptr;
 }
 
 void MainWindow::haenimi(QString Client)
@@ -80,13 +95,17 @@ void MainWindow::haenimi(QString Client)
 
 }
 
+void MainWindow::haenimi1(QString Client1)
+{
+    Pnaytasaldo->paivitaLeClient1(Client1);
+}
+
 void MainWindow::haesaldo(QString saldo)
 {
     qDebug()<<"hae saldoo "+saldo;
-    //saldo = saldo+" $";
-    //Ppankkimenu->asetaSaldo(saldo);
     Pnaytasaldo->show();
     Pnaytasaldo->paivitaLeSaldo(saldo);
+
 
 }
 
@@ -97,20 +116,24 @@ void MainWindow::haeTT10(QString TT10)
 
 }
 
-void MainWindow::haeTT5(QString TT5) //uus
+void MainWindow::haeTT5(QString TT5)
 {
-    Pselaatilitapahtumia->paivitaTT5(TT5); //uus
-}
-
-void MainWindow::haeNosto(QString)
-{
+    Pselaatilitapahtumia->paivitaTT5(TT5);
 
 }
+
+void MainWindow::haeTT5eka(QString TT5eka)
+{
+    Pselaatilitapahtumia->paivitaTT5eka(TT5eka);
+}
+
 
 void MainWindow::on_kirjaudusisaan_clicked()
 {
 
     pPindll->naytaPincodeUi();
+
+
 
 }
 
@@ -170,6 +193,7 @@ void MainWindow::on_lenaytasaldo_clicked()
 {
     pRestapidll->getSaldo("1");
     pRestapidll->getTT10("1");
+    pRestapidll->getNimi("1");
 }
 
 void MainWindow::on_nostarahaa_clicked()
@@ -188,5 +212,7 @@ void MainWindow::on_selaaTT_clicked()
 {
     Pselaatilitapahtumia->show();
     pRestapidll->getNimi("1");
+    //pRestapidll->getTT5("1");
+    pRestapidll->getTT5eka("1");
 }
 

@@ -10,6 +10,11 @@ Restapidll::~Restapidll()
 
 }
 
+void Restapidll::setToken(QByteArray wtoken)
+{
+    token = wtoken;
+}
+
 void Restapidll::getSaldo(QString tilinumero)
 {
     QString site_url="http://localhost:3000/tili/"+tilinumero;
@@ -91,10 +96,6 @@ void Restapidll::getNimi(QString id)
     reply = getNimiManager->get(request);
 }
 
-void Restapidll::setToken(QByteArray wtoken)
-{
-    token = wtoken;
-}
 
 void Restapidll::getNimiSlot(QNetworkReply *reply)
 {
@@ -161,7 +162,7 @@ void Restapidll::getTT10Slot(QNetworkReply *reply)
     QString tilitapahtumat;
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        tilitapahtumat+=QString::number(json_obj["idTilitapahtumat"].toInt())+" , "+json_obj["tilinumero"].toString()+" , "+json_obj["KortinNumero"].toString()+" , "+json_obj["PVM"].toString()+" , "+json_obj["Tapahtuma"].toString()+" , "+QString::number(json_obj["Summa"].toInt())+" , "+QString::number(json_obj["idKortti"].toInt())+" , "+QString::number(json_obj["idTili"].toInt())+"\r";
+        tilitapahtumat+=QString::number(json_obj["idTilitapahtumat"].toInt())+" , "+json_obj["tilinumero"].toString()+" , "+json_obj["KortinNumero"].toString()+" , "+json_obj["PVM"].toString()+" , "+json_obj["Tapahtuma"].toString()+" , "+QString::number(json_obj["Summa"].toInt())+" , "+QString::number(json_obj["idKortti"].toInt())+" , "+QString::number(json_obj["idTili"].toInt())+"\n";
     }
 
     qDebug()<<tilitapahtumat;
@@ -172,7 +173,7 @@ void Restapidll::getTT10Slot(QNetworkReply *reply)
 
 void Restapidll::getTT5(QString tilin)
 {
-    QString site_url="http://localhost:3000/tilitapahtumat/5tapahtumaa/"+tilin; //muokattu
+    QString site_url="http://localhost:3000/tilitapahtumat/5tapahtumaa/"+tilin;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
@@ -193,7 +194,7 @@ void Restapidll::getTT5Slot(QNetworkReply *reply)
     QString tilitapahtumat5;
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        tilitapahtumat5+=QString::number(json_obj["idTilitapahtumat"].toInt())+","+json_obj["tilinumero"].toString()+","+json_obj["KortinNumero"].toString()+","+json_obj["PVM"].toString()+","+json_obj["Tapahtuma"].toString()+","+QString::number(json_obj["Summa"].toInt())+","+QString::number(json_obj["idKortti"].toInt())+","+QString::number(json_obj["idTili"].toInt())+"\n";
+        tilitapahtumat5+=QString::number(json_obj["idTilitapahtumat"].toInt())+",     "+json_obj["tilinumero"].toString()+",     "+json_obj["KortinNumero"].toString()+",     "+json_obj["PVM"].toString()+",     "+json_obj["Tapahtuma"].toString()+",     "+QString::number(json_obj["Summa"].toInt())+",     "+QString::number(json_obj["idKortti"].toInt())+",     "+QString::number(json_obj["idTili"].toInt())+"\n";
     }
 
     qDebug()<<tilitapahtumat5;
@@ -224,13 +225,18 @@ void Restapidll::getTT5ekaSlot(QNetworkReply *reply)
     QString tilitapahtumat5ekaa;
     foreach (const QJsonValue &value, json_array) {
         QJsonObject json_obj = value.toObject();
-        tilitapahtumat5ekaa+=QString::number(json_obj["idTilitapahtumat"].toInt())+","+json_obj["tilinumero"].toString()+","+json_obj["KortinNumero"].toString()+","+json_obj["PVM"].toString()+","+json_obj["Tapahtuma"].toString()+","+QString::number(json_obj["Summa"].toInt())+","+QString::number(json_obj["idKortti"].toInt())+","+QString::number(json_obj["idTili"].toInt())+"\r";
+        tilitapahtumat5ekaa+=QString::number(json_obj["idTilitapahtumat"].toInt())+",   "+json_obj["tilinumero"].toString()+",    "+json_obj["KortinNumero"].toString()+",    "+json_obj["PVM"].toString()+",    "+json_obj["Tapahtuma"].toString()+",    "+QString::number(json_obj["Summa"].toInt())+",    "+QString::number(json_obj["idKortti"].toInt())+",    "+QString::number(json_obj["idTili"].toInt())+"\n";
     }
 
     qDebug()<<tilitapahtumat5ekaa;
     emit TT5ekaToExe(tilitapahtumat5ekaa);
     reply->deleteLater();
     getTT5EkaManager->deleteLater();
+}
+
+void Restapidll::getAsiakas()
+{
+
 }
 
 

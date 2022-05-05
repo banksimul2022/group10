@@ -9,8 +9,6 @@ naytasaldo::naytasaldo(QWidget *parent) :
     ui->setupUi(this);
 
 
-
-
 }
 
 naytasaldo::~naytasaldo()
@@ -55,6 +53,11 @@ void naytasaldo::slotClient1(QString Client1)
 void naytasaldo::paivitaLeTT10(QString TT10)
 {
     ui->ttlabel->setText(TT10);
+}
+
+void naytasaldo::updateBalanceSlot()
+{
+
 }
 
 void naytasaldo::slotTilitapahtumat(QString TT10)

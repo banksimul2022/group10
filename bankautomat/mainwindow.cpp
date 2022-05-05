@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include <qdebug.h>
 #include <naytasaldo.h>
-#include <selaatilitapahtumia.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,8 +19,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     Pselaatilitapahtumia = new selaatilitapahtumia;
 
-    pRestapidll = new Restapidll;
-
     pRFIDdll = new RfidDll;
 
 
@@ -33,9 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(pRestapidll, SIGNAL(loginSignal(QByteArray)), //login success / fail
                 this, SLOT(login_slot(QByteArray)));
-
-    connect(this, SIGNAL(wrongPinSignal()),
-                 pPindll, SLOT(pinkoodi_vaarin()));
 
     connect(pRestapidll, SIGNAL(saldoToExe(QString)),
                     this,SLOT(haesaldo(QString)));
@@ -52,11 +46,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pRestapidll, SIGNAL(TT5ToExe(QString)),
                     this,SLOT(haeTT5(QString)));
 
-    connect(pRestapidll, SIGNAL(TT5ekaToExe(QString)),
-                    this,SLOT(haeTT5eka(QString)));
-
     connect(pRFIDdll, SIGNAL(lahetaid(QByteArray)),
                     this,SLOT(RFID_slot(QByteArray)));
+
+
 
 
 
@@ -82,11 +75,11 @@ MainWindow::~MainWindow()
     delete Pnaytasaldo;
     Pnaytasaldo = nullptr;
 
-    delete pRestapidll;
-    pRestapidll = nullptr;
-
     delete pRFIDdll;
     pRFIDdll = nullptr;
+
+    delete pRestapidll;
+    pRestapidll = nullptr;
 }
 
 void MainWindow::haenimi(QString Client)
@@ -103,6 +96,8 @@ void MainWindow::haenimi1(QString Client1)
 void MainWindow::haesaldo(QString saldo)
 {
     qDebug()<<"hae saldoo "+saldo;
+    //saldo = saldo+" $";
+    //Ppankkimenu->asetaSaldo(saldo);
     Pnaytasaldo->show();
     Pnaytasaldo->paivitaLeSaldo(saldo);
 
@@ -118,55 +113,15 @@ void MainWindow::haeTT10(QString TT10)
 
 void MainWindow::haeTT5(QString TT5)
 {
-    Pselaatilitapahtumia->paivitaTT5(TT5);
+    Pselaatilitapahtumia->on_btnSeuraava_clicked(TT5);
 
 }
 
-void MainWindow::haeTT5eka(QString TT5eka)
-{
-    Pselaatilitapahtumia->paivitaTT5eka(TT5eka);
-}
-
-
-void MainWindow::on_kirjaudusisaan_clicked()
-{
-
-    pPindll->naytaPincodeUi();
-
-
-
-}
 
 void MainWindow::RFID_slot(QByteArray)
 {
     pPindll->naytaPincodeUi();
 }
-
-void MainWindow::startTimer()
-{
-
-}
-
-void MainWindow::tiliValittuSlot(QString)
-{
-
-}
-
-void MainWindow::getAsiakasSlot(QString)
-{
-
-}
-
-void MainWindow::trueFalse()
-{
-
-}
-
-void MainWindow::wrongPinSignal()
-{
-
-}
-
 
 void MainWindow::pinkoodi_slot(QString pinkoodi)
 {
@@ -212,7 +167,6 @@ void MainWindow::on_selaaTT_clicked()
 {
     Pselaatilitapahtumia->show();
     pRestapidll->getNimi("1");
-    //pRestapidll->getTT5("1");
-    pRestapidll->getTT5eka("1");
+    pRestapidll->getTT5("1");
 }
 

@@ -97,7 +97,7 @@ static const uint qt_meta_data_Restapidll[] = {
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
-    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QByteArray,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void, QMetaType::QString,    2,
@@ -124,7 +124,7 @@ void Restapidll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->saldoToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->loginSignal((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 2: _t->summaToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->summaToExe((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
         case 3: _t->TT10ToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 4: _t->TT5ToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->TT5ekaToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
@@ -209,7 +209,7 @@ void Restapidll::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (Restapidll::*)(QString );
+            using _t = void (Restapidll::*)(QByteArray );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Restapidll::summaToExe)) {
                 *result = 2;
                 return;
@@ -308,7 +308,7 @@ void Restapidll::loginSignal(QString _t1)
 }
 
 // SIGNAL 2
-void Restapidll::summaToExe(QString _t1)
+void Restapidll::summaToExe(QByteArray _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);

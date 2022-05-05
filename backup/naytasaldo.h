@@ -24,6 +24,8 @@ public:
 
     void paivitaLeSaldo(QString);
 
+    void paivitaLeClient1(QString);
+
     void paivitaLeTT10(QString);
 
 private slots:
@@ -35,6 +37,8 @@ private slots:
 
     void slotTilitapahtumat(QString);
 
+    void slotClient1(QString);
+
     //void on_naytaTT10_clicked();
 
 private:
@@ -43,6 +47,7 @@ private:
     QString Asiakas;
     QString Saldo;
     QString tt10;
+    QString client1;
 };
 
 #endif // NAYTASALDO_H

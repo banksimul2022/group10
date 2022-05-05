@@ -103,6 +103,19 @@
     <string>LABEL</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>160</y>
+     <width>791</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Kortinnumero                   PVM        Tapahtuma     Summa    Kortti ID   Tili ID</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -11,7 +11,6 @@
 #include "nostarahaa.h"
 #include "rfiddll.h"
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -23,34 +22,22 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    Restapidll* pRestapidll;
-    selaatilitapahtumia *Pselaatilitapahtumia;
+     Restapidll* pRestapidll;
 public slots:
     void haenimi(QString);
     void haenimi1(QString);
     void haesaldo(QString);
     void haeTT10(QString);
     void haeTT5(QString);
-    void haeTT5eka(QString);
 
 
 private slots:
-    void on_kirjaudusisaan_clicked();
     void pinkoodi_slot(QString);
     void login_slot(QByteArray);
     void RFID_slot(QByteArray);
-    void startTimer();
-    void tiliValittuSlot(QString);
-    void getAsiakasSlot(QString);
-    void trueFalse();
-    void wrongPinSignal();
-
     void on_lenaytasaldo_clicked();
-
     void on_nostarahaa_clicked();
-
     void on_logoff_clicked();
-
     void on_selaaTT_clicked();
 
 signals:
@@ -64,6 +51,7 @@ private:
     QString asiakas;
     QString valinta;
     naytasaldo *Pnaytasaldo;
+    selaatilitapahtumia *Pselaatilitapahtumia;
     nostarahaa *Pnostarahaa;
     RfidDll *pRFIDdll;
 

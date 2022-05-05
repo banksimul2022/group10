@@ -9,6 +9,7 @@
 #include "naytasaldo.h"
 #include "selaatilitapahtumia.h"
 #include "nostarahaa.h"
+#include "rfiddll.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,13 +23,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    Restapidll* pRestapidll;
+    selaatilitapahtumia *Pselaatilitapahtumia;
 public slots:
     void haenimi(QString);
+    void haenimi1(QString);
     void haesaldo(QString);
     void haeTT10(QString);
-    void haeNosto(QString);
-    void haeTT5(QString); //uus
+    void haeTT5(QString);
+    void haeTT5eka(QString);
 
 
 private slots:
@@ -57,14 +60,12 @@ signals:
 private:
     Ui::MainWindow *ui;
     Pindll *pPindll;
-
     QTimer *timer;
     QString asiakas;
     QString valinta;
-    Restapidll* pRestapidll;
     naytasaldo *Pnaytasaldo;
-    selaatilitapahtumia *Pselaatilitapahtumia;
     nostarahaa *Pnostarahaa;
+    RfidDll *pRFIDdll;
 
 
 

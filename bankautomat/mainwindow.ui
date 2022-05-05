@@ -14,24 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="kirjaudusisaan">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>150</y>
-      <width>141</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Kirjaudu sisään</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="logoff">
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>370</y>
+      <y>460</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -43,8 +30,8 @@
    <widget class="QPushButton" name="nostarahaa">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>150</y>
+      <x>510</x>
+      <y>230</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -56,8 +43,8 @@
    <widget class="QPushButton" name="selaaTT">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>240</y>
+      <x>90</x>
+      <y>230</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -69,8 +56,8 @@
    <widget class="QPushButton" name="lenaytasaldo">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>240</y>
+      <x>300</x>
+      <y>230</y>
       <width>141</width>
       <height>51</height>
      </rect>

@@ -28,6 +28,9 @@ public:
 
     void paivitaLeTT10(QString);
 
+public slots:
+    void updateBalanceSlot();
+
 private slots:
     void on_palaaNaytasaldo_clicked();
 
@@ -38,8 +41,6 @@ private slots:
     void slotTilitapahtumat(QString);
 
     void slotClient1(QString);
-
-    //void on_naytaTT10_clicked();
 
 private:
     Ui::naytasaldo *ui;
