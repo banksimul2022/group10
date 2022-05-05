@@ -17,7 +17,7 @@ public:
     ~Restapidll();
     void getSaldo(QString tilinumero);
     void login(QString KortinNumero, QString PIN);
-    void nosto(QString Summa);
+    void nosto(QString);
     void getTT10(QString tilinum);
     void getTT5(QString);
     void getTT5eka(QString);
@@ -28,7 +28,7 @@ public:
 signals:
     void saldoToExe(QString);
     void loginSignal(QString);
-    void summaToExe(QString); //uusi
+    void summaToExe(QByteArray); //uusi
     void TT10ToExe(QString); //uusi
     void TT5ToExe(QString); //uusi
     void TT5ekaToExe(QString); //uusi

@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     Pselaatilitapahtumia = new selaatilitapahtumia;
 
+    pRFIDdll = new RfidDll;
+
 
     timer = new QTimer;
 
@@ -47,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(pRestapidll, SIGNAL(TT5ToExe(QString)),
                     this,SLOT(haeTT5(QString)));
 
+    connect(pRFIDdll, SIGNAL(lahetaid(QByteArray)),
+                    this,SLOT(RFID_slot(QByteArray)));
+
+
 
 
 
@@ -71,6 +77,12 @@ MainWindow::~MainWindow()
 
     delete Pnaytasaldo;
     Pnaytasaldo = nullptr;
+
+    delete pRFIDdll;
+    pRFIDdll = nullptr;
+
+    delete pRestapidll;
+    pRestapidll = nullptr;
 }
 
 void MainWindow::haenimi(QString Client)

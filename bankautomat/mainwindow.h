@@ -9,7 +9,7 @@
 #include "naytasaldo.h"
 #include "selaatilitapahtumia.h"
 #include "nostarahaa.h"
-
+#include "rfiddll.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -63,6 +63,7 @@ private:
     naytasaldo *Pnaytasaldo;
     selaatilitapahtumia *Pselaatilitapahtumia;
     nostarahaa *Pnostarahaa;
+    RfidDll *pRFIDdll;
 
 
 

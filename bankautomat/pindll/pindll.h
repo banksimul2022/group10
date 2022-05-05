@@ -1,4 +1,4 @@
-#ifndef PINDLL_H
+ #ifndef PINDLL_H
 #define PINDLL_H
 
 #include <QObject>

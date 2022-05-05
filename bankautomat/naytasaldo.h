@@ -28,6 +28,9 @@ public:
 
     void paivitaLeTT10(QString);
 
+public slots:
+    void updateBalanceSlot();
+
 private slots:
     void on_palaaNaytasaldo_clicked();
 
